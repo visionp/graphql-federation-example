@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@apollo/gateway": "^2.8.4",
+    "@apollo/server": "^4.11.0",
+    "@apollo/subgraph": "^2.8.4",
+    "graphql": "^16.9.0",
+    "ts-node": "^10.9.2"
+  },
+  "name": "graphql",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node -O '{\"module\": \"commonjs\"}' index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

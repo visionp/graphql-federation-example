@@ -1,0 +1,14 @@
+directive @link(url: String,as: String,import: [link__Import]) repeatable on SCHEMA
+scalar link__Import
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@extends", "@external", "@requires", "@provides", "@shareable", "@override", "FieldSet"])
+
+scalar FieldSet
+directive @external on OBJECT | FIELD_DEFINITION
+directive @requires(fields: FieldSet!) on FIELD_DEFINITION
+directive @provides(fields: FieldSet!) on FIELD_DEFINITION
+directive @key(fields: FieldSet!) on OBJECT | INTERFACE
+directive @extends on OBJECT | INTERFACE
+
+type Query @extends {
+    myName: String!
+}
