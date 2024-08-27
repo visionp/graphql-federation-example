@@ -10,3 +10,4 @@
 ###< symfony/phpunit-bridge ###
 ./var
 /vendor/
+/var/

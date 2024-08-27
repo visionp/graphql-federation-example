@@ -1,7 +1,5 @@
 FROM node:latest
 WORKDIR /app
-
-COPY ./apollo/package.json ./apollo/package-lock.json ./
-RUN npm instal
-
+COPY ./apollo /app
+RUN npm install
 CMD ["npm", "start"]

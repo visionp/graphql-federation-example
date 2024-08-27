@@ -10,8 +10,6 @@ services:
       container_name: graphql-apollo
       hostname: graphql-apollo
       working_dir: /app
-      volumes:
-        - ./apollo:/app
       ports:
         - "4000:4000"
       networks:
