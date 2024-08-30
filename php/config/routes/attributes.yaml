@@ -1,9 +1,0 @@
-controllers:
-  resource:
-    path: ../../src/Application/Controller/
-    namespace: GraphqlApp\Application\Controller
-  type: attribute
-
-kernel:
-  resource: GraphqlApp\Application\Kernel
-  type: attribute

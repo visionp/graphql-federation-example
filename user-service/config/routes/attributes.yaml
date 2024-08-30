@@ -1,0 +1,9 @@
+controllers:
+  resource:
+    path: ../../src/Application/Controller/
+    namespace: UserService\Application\Controller
+  type: attribute
+
+kernel:
+  resource: UserService\Application\Kernel
+  type: attribute
