@@ -164,8 +164,8 @@ class TypeRegistry
             // No resolver. Default used
             'type' => function() { return Type::nonNull(function() { return Type::id(); }); },
             'args' => [],
-        ]),'Rating' => new FieldDefinition([
-            'name' => 'Rating',
+        ]),'rating' => new FieldDefinition([
+            'name' => 'rating',
             'description' => NULL,
             'deprecationReason' => NULL,
             // No resolver. Default used

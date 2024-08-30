@@ -14,6 +14,6 @@ use Axtiva\FlexibleGraphql\Resolver\AutoGenerationInterface;
 final class ProfileType implements AutoGenerationInterface, _EntityInterface
 {
     public string $id;
-    public int $Rating;
+    public int $rating;
     public UserType $user;
 }

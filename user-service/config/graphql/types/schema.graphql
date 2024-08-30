@@ -23,7 +23,7 @@ type User @key(fields: "id") {
 
 type Profile @key(fields: "id") {
     id: ID!
-    Rating: Int!
+    rating: Int!
     user: User!
 }
 
