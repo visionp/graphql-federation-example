@@ -11,9 +11,8 @@ use Axtiva\FlexibleGraphql\Resolver\AutoGenerationInterface;
  * and it will be managed by you, not axtiva/flexible-graphql-php code generator
  * PHP representation of graphql type UserFeatureFlag
  */
-final class UserFeatureFlagType implements AutoGenerationInterface, _EntityInterface
+final class UserFeatureFlagType implements _EntityInterface
 {
     public string $id;
     public string $name;
-    public UserType $user;
 }

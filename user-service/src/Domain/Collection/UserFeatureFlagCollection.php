@@ -11,7 +11,8 @@ final class UserFeatureFlagCollection extends GenericCollection
 {
     public function __construct(
         iterable $elements,
-    ) {
+    )
+    {
         parent::__construct(UserFeatureFlag::class, $elements);
     }
 }
