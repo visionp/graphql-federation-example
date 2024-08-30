@@ -136,14 +136,20 @@ class TypeRegistry
             'name' => 'profile',
             'description' => NULL,
             'deprecationReason' => NULL,
-            // No resolver. Default used
+            'resolve' => (function ($rootValue, $args, $context, $info) {
+    
+    return $this->container->get('UserService\Application\GraphQL\Resolver\User\ProfileResolver')($rootValue, $args, $context, $info);
+}),
             'type' => function() { return Type::nonNull(function() { return new ListOfType(function() { return Type::nonNull(function() { return $this->getType('Profile'); }); }); }); },
             'args' => [],
         ]),'UserFeatureFlags' => new FieldDefinition([
             'name' => 'UserFeatureFlags',
             'description' => NULL,
             'deprecationReason' => NULL,
-            // No resolver. Default used
+            'resolve' => (function ($rootValue, $args, $context, $info) {
+    
+    return $this->container->get('UserService\Application\GraphQL\Resolver\User\UserFeatureFlagsResolver')($rootValue, $args, $context, $info);
+}),
             'type' => function() { return Type::nonNull(function() { return new ListOfType(function() { return Type::nonNull(function() { return $this->getType('UserFeatureFlag'); }); }); }); },
             'args' => [],
         ])],
@@ -175,7 +181,10 @@ class TypeRegistry
             'name' => 'user',
             'description' => NULL,
             'deprecationReason' => NULL,
-            // No resolver. Default used
+            'resolve' => (function ($rootValue, $args, $context, $info) {
+    
+    return $this->container->get('UserService\Application\GraphQL\Resolver\Profile\UserResolver')($rootValue, $args, $context, $info);
+}),
             'type' => function() { return Type::nonNull(function() { return $this->getType('User'); }); },
             'args' => [],
         ])],

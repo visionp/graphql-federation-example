@@ -2,7 +2,7 @@
 
 namespace UserService\Domain\Repository;
 
-use GraphqlApp\Domain\Collection\UserFeatureFlagCollection;
+use UserService\Domain\Collection\UserFeatureFlagCollection;
 use UserService\Domain\Entity\UserFeatureFlag;
 
 interface UserFeatureFlagRepositoryInterface

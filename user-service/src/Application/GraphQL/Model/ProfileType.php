@@ -11,9 +11,8 @@ use Axtiva\FlexibleGraphql\Resolver\AutoGenerationInterface;
  * and it will be managed by you, not axtiva/flexible-graphql-php code generator
  * PHP representation of graphql type Profile
  */
-final class ProfileType implements AutoGenerationInterface, _EntityInterface
+final class ProfileType implements _EntityInterface
 {
     public string $id;
     public int $rating;
-    public UserType $user;
 }

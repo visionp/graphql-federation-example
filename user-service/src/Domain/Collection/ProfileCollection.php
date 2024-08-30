@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GraphqlApp\Domain\Collection;
+namespace UserService\Domain\Collection;
 
 use UserService\Domain\Collection\Base\GenericCollection;
 use UserService\Domain\Entity\Profile;

@@ -2,7 +2,7 @@
 
 namespace UserService\Domain\Repository;
 
-use GraphqlApp\Domain\Collection\ProfileCollection;
+use UserService\Domain\Collection\ProfileCollection;
 use UserService\Domain\Entity\Profile;
 
 interface ProfileRepositoryInterface

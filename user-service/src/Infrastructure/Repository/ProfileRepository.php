@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace UserService\Infrastructure\Repository;
 
-use GraphqlApp\Domain\Collection\ProfileCollection;
+use UserService\Domain\Collection\ProfileCollection;
 use UserService\Domain\Entity\Profile;
 use UserService\Domain\Repository\ProfileRepositoryInterface;
 

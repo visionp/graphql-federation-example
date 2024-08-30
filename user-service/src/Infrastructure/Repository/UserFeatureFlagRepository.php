@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace UserService\Infrastructure\Repository;
 
-use GraphqlApp\Domain\Collection\UserFeatureFlagCollection;
+use UserService\Domain\Collection\UserFeatureFlagCollection;
 use UserService\Domain\Repository\UserFeatureFlagRepositoryInterface;
 use UserService\Domain\Entity\UserFeatureFlag;
 
