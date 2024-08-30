@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GraphqlApp\Domain\UseCase;
+namespace UserService\Domain\UseCase;
 
-use GraphqlApp\Domain\Repository\UserRepositoryInterface;
+use UserService\Domain\Repository\UserRepositoryInterface;
 
 final readonly class ProfileUseCase
 {

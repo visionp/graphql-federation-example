@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GraphqlApp\Infrastructure\Repository;
+namespace UserService\Infrastructure\Repository;
 
-use GraphqlApp\Domain\Repository\UserFeatureFlagRepositoryInterface;
+use UserService\Domain\Repository\UserFeatureFlagRepositoryInterface;
 
 final readonly class UserFeatureFlagRepository implements UserFeatureFlagRepositoryInterface
 {

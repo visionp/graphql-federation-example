@@ -20,4 +20,8 @@ final class UserType implements AutoGenerationInterface, _EntityInterface
      * @var iterable
      */
     public iterable $profile;
+    /**
+     * @var iterable
+     */
+    public iterable $UserFeatureFlags;
 }

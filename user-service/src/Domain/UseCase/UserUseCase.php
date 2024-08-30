@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GraphqlApp\Domain\UseCase;
+namespace UserService\Domain\UseCase;
 
 final readonly class UserUseCase
 {

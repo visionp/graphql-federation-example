@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GraphqlApp\Domain\UseCase;
+namespace UserService\Domain\UseCase;
 
-use GraphqlApp\Domain\Repository\UserFeatureFlagRepositoryInterface;
+use UserService\Domain\Repository\UserFeatureFlagRepositoryInterface;
 
 final readonly class UserFeatureFlagUseCase
 {

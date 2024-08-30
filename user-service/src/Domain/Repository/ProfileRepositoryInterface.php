@@ -1,6 +1,6 @@
 <?php
 
-namespace GraphqlApp\Domain\Repository;
+namespace UserService\Domain\Repository;
 
 interface ProfileRepositoryInterface
 {

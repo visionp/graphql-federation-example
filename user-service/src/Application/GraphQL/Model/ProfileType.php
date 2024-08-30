@@ -15,9 +15,5 @@ final class ProfileType implements AutoGenerationInterface, _EntityInterface
 {
     public string $id;
     public int $Rating;
-    /**
-     * @var iterable
-     */
-    public iterable $UserFeatureFlags;
     public UserType $user;
 }

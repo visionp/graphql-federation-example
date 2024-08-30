@@ -18,12 +18,12 @@ type User @key(fields: "id") {
     name: String!
     email: String!
     profile: [Profile!]!
+    UserFeatureFlags: [UserFeatureFlag!]!
 }
 
 type Profile @key(fields: "id") {
     id: ID!
     Rating: Int!
-    UserFeatureFlags: [UserFeatureFlag!]!
     user: User!
 }
 

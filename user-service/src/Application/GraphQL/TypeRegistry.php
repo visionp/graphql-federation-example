@@ -139,6 +139,13 @@ class TypeRegistry
             // No resolver. Default used
             'type' => function() { return Type::nonNull(function() { return new ListOfType(function() { return Type::nonNull(function() { return $this->getType('Profile'); }); }); }); },
             'args' => [],
+        ]),'UserFeatureFlags' => new FieldDefinition([
+            'name' => 'UserFeatureFlags',
+            'description' => NULL,
+            'deprecationReason' => NULL,
+            // No resolver. Default used
+            'type' => function() { return Type::nonNull(function() { return new ListOfType(function() { return Type::nonNull(function() { return $this->getType('UserFeatureFlag'); }); }); }); },
+            'args' => [],
         ])],
         ]);
             }
@@ -163,13 +170,6 @@ class TypeRegistry
             'deprecationReason' => NULL,
             // No resolver. Default used
             'type' => function() { return Type::nonNull(function() { return Type::int(); }); },
-            'args' => [],
-        ]),'UserFeatureFlags' => new FieldDefinition([
-            'name' => 'UserFeatureFlags',
-            'description' => NULL,
-            'deprecationReason' => NULL,
-            // No resolver. Default used
-            'type' => function() { return Type::nonNull(function() { return new ListOfType(function() { return Type::nonNull(function() { return $this->getType('UserFeatureFlag'); }); }); }); },
             'args' => [],
         ]),'user' => new FieldDefinition([
             'name' => 'user',

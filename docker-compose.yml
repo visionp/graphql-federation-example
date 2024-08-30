@@ -3,41 +3,37 @@
 ###############################################################################
 
 services:
-    graphql-apollo:
+    apollo:
       build:
         context: .
         dockerfile: docker/node/Dockerfile
-      container_name: graphql-apollo
-      hostname: graphql-apollo
+      container_name: apollo
+      hostname: apollo
       working_dir: /app
       ports:
         - "4000:4000"
       networks:
         default:
           aliases:
-            - graphql-apollo
+            - apollo
 
     graphql-nginx:
       image: nginx:alpine
-      container_name: plains-nginx
-      hostname: graphql-nginx
+      container_name: user-service-nginx
+      hostname: user-service-nginx
       working_dir: /var/www
       volumes:
         - ./php:/var/www
         - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       ports:
         - "8090:80"
-      networks:
-        default:
-          aliases:
-            - graphql-nginx
 
-    graphql-php:
+    user-service:
       build:
         context: .
         dockerfile: docker/php/Dockerfile
-      container_name: graphql-php
-      hostname: graphql-php
+      container_name: user-service
+      hostname: user-service
       working_dir: /var/www/
       volumes:
         - ./php:/var/www
@@ -46,16 +42,16 @@ services:
       networks:
         default:
           aliases:
-            - graphql-php
+            - user-service-php
 
-    graphql-golang:
+    book-service:
       build:
         context: .
         dockerfile: ./docker/golang/Dockerfile
-      container_name: graphql-golang
-      hostname: graphql-golang
+      container_name: book-service
+      hostname: book-service
       working_dir: /app
       networks:
         default:
           aliases:
-            - graphql-golang
+            - book-service
