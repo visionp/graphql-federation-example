@@ -33,12 +33,13 @@ final readonly class UserFeatureFlagRepository implements UserFeatureFlagReposit
     public function findByUserId(string $idUser): UserFeatureFlagCollection
     {
         $flags = $this->userFlagRelation[$idUser] ?? [];
+        $items = [];
 
         foreach ($flags as $flagId) {
-            $flags[] = $this->findById($flagId);
+            $items[] = $this->findById($flagId);
         }
 
-        return new UserFeatureFlagCollection(array_filter($flags));
+        return new UserFeatureFlagCollection(array_filter($items));
     }
 
     private function init(): array

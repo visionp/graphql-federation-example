@@ -2,12 +2,13 @@
 
 namespace UserService\Application\Controller;
 
-use GraphQL\Error\DebugFlag;
 use GraphQL\GraphQL;
 use GraphQL\Server\ServerConfig;
 use GraphQL\Server\StandardServer;
 use GraphQL\Type\Schema;
 use GraphQL\Validator\Rules;
+use GraphqlApp\Application\GraphQL\ErrorHandler\ErrorHandler;
+use Psr\Log\LoggerInterface;
 use UserService\Application\GraphQL\TypeRegistry;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,6 +21,7 @@ class GraphqlController extends AbstractController
     public function __construct(
         private readonly TypeRegistry $typeRegistry,
         private readonly HttpMessageFactoryInterface $httpMessageFactory,
+        private readonly LoggerInterface $logger
     ) {
     }
 
@@ -47,6 +49,7 @@ class GraphqlController extends AbstractController
             ]))
             ->setRootValue([])
             ->setValidationRules($validatorRules)
+            ->setErrorsHandler(new ErrorHandler($this->logger))
         ;
 
         $server = new StandardServer($config);
