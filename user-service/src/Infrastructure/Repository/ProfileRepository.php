@@ -11,14 +11,16 @@ use UserService\Domain\Repository\ProfileRepositoryInterface;
 final readonly class ProfileRepository implements ProfileRepositoryInterface
 {
     private array $profiles;
-    private array $profilesBuIdUser;
+    private array $profilesByIdUser;
 
     public function __construct()
     {
         $this->profiles = $this->initProfiles();
+        $profilesByIdUser = [];
         foreach ($this->profiles as $profile) {
-            $this->profilesBuIdUser[$profile->idUser] = $profile;
+            $profilesByIdUser[$profile->idUser] = $profile;
         }
+        $this->profilesByIdUser = $profilesByIdUser;
     }
 
     public function findById(string $id): ?Profile
@@ -28,7 +30,7 @@ final readonly class ProfileRepository implements ProfileRepositoryInterface
 
     public function findByUserId(string $idUser): ?Profile
     {
-        return $this->profilesBuIdUser[$idUser] ?? null;
+        return $this->profilesByIdUser[$idUser] ?? null;
     }
 
     public function findAll(): ProfileCollection
