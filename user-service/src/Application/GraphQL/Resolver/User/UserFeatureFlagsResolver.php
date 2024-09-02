@@ -5,7 +5,7 @@ namespace UserService\Application\GraphQL\Resolver\User;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use Axtiva\FlexibleGraphql\Resolver\ResolverInterface;
-use GraphqlApp\Application\GraphQL\Mapper\UserFeatureFlagsMapper;
+use UserService\Application\GraphQL\Mapper\UserFeatureFlagsMapper;
 use UserService\Application\GraphQL\Model\UserType;
 use UserService\Application\GraphQL\Model\UserFeatureFlagType;
 use UserService\Domain\UseCase\UserFeatureFlagUseCase;

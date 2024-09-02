@@ -6,7 +6,7 @@ namespace UserService\Application\GraphQL\Resolver\Profile;
 use Axtiva\FlexibleGraphql\Generator\Exception\NotImplementedResolver;
 use GraphQL\Type\Definition\ResolveInfo;
 use Axtiva\FlexibleGraphql\Resolver\ResolverInterface;
-use GraphqlApp\Application\GraphQL\Mapper\ProfileMapper;
+use UserService\Application\GraphQL\Mapper\ProfileMapper;
 use UserService\Application\GraphQL\Model\ProfileType;
 use UserService\Application\GraphQL\Model\UserType;
 use UserService\Domain\UseCase\ProfileUseCase;

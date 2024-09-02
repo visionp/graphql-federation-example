@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GraphqlApp\Application\GraphQL\Mapper;
+namespace UserService\Application\GraphQL\Mapper;
 
 use UserService\Application\GraphQL\Model\ProfileType;
 use UserService\Domain\Entity\Profile;

@@ -7,7 +7,7 @@ use GraphQL\Type\Definition\ResolveInfo;
 use Axtiva\FlexibleGraphql\Representation;
 use Axtiva\FlexibleGraphql\Resolver\FederationRepresentationResolverInterface;
 use Axtiva\FlexibleGraphql\Generator\Exception\NotImplementedResolver;
-use GraphqlApp\Application\GraphQL\Mapper\UserMapper;
+use UserService\Application\GraphQL\Mapper\UserMapper;
 use UserService\Application\GraphQL\Model\UserType;
 use UserService\Domain\UseCase\UserUseCase;
 

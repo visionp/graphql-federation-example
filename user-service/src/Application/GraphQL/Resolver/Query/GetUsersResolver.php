@@ -5,7 +5,7 @@ namespace UserService\Application\GraphQL\Resolver\Query;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use Axtiva\FlexibleGraphql\Resolver\ResolverInterface;
-use GraphqlApp\Application\GraphQL\Mapper\UsersMapper;
+use UserService\Application\GraphQL\Mapper\UsersMapper;
 use UserService\Application\GraphQL\Model\UserType;
 use UserService\Domain\UseCase\UserUseCase;
 
