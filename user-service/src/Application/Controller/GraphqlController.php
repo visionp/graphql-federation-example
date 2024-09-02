@@ -17,18 +17,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GraphqlController extends AbstractController
 {
-    private HttpMessageFactoryInterface $httpMessageFactory;
-    private TypeRegistry $typeRegistry;
-    private bool $debugMode;
-
     public function __construct(
-        TypeRegistry $typeRegistry,
-        HttpMessageFactoryInterface $httpMessageFactory,
-        $debugMode = false
+        private readonly TypeRegistry $typeRegistry,
+        private readonly HttpMessageFactoryInterface $httpMessageFactory,
     ) {
-        $this->httpMessageFactory = $httpMessageFactory;
-        $this->typeRegistry = $typeRegistry;
-        $this->debugMode = $debugMode;
     }
 
     #[Route('/graphql', name: 'graphql')]
