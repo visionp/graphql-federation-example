@@ -140,7 +140,7 @@ class TypeRegistry
     
     return $this->container->get('UserService\Application\GraphQL\Resolver\User\ProfileResolver')($rootValue, $args, $context, $info);
 }),
-            'type' => function() { return Type::nonNull(function() { return new ListOfType(function() { return Type::nonNull(function() { return $this->getType('Profile'); }); }); }); },
+            'type' => function() { return $this->getType('Profile'); },
             'args' => [],
         ]),'userFeatureFlags' => new FieldDefinition([
             'name' => 'userFeatureFlags',

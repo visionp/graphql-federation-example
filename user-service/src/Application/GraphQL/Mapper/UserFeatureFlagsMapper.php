@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace UserService\Application\GraphQL\Mapper;
 
-use UserService\Application\GraphQL\Model\UserFeatureFlagType;
 use UserService\Domain\Collection\UserFeatureFlagCollection;
-use UserService\Domain\Entity\UserFeatureFlag;
 
 final readonly class UserFeatureFlagsMapper
 {
