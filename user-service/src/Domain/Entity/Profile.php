@@ -9,7 +9,7 @@ final readonly class Profile
     public function __construct(
         public string $id,
         public string $idUser,
-        public string $rating,
+        public int $rating,
     ) {
     }
 }

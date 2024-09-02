@@ -46,7 +46,7 @@ final readonly class ProfileRepository implements ProfileRepositoryInterface
             $profiles[$id] = new Profile(
                 (string) $id,
                 (string) $idUser,
-                (string)rand(1, 5),
+                rand(1, 5),
             );
         }
 

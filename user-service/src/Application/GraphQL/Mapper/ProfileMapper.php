@@ -15,9 +15,10 @@ final readonly class ProfileMapper
             return null;
         }
 
-        return new ProfileType(
-            id: $profile->id,
-            rating: $profile->rating,
-        );
+        $profileType = new ProfileType();
+        $profileType->id = $profile->id;
+        $profileType->rating = $profile->rating;
+
+        return $profileType;
     }
 }
