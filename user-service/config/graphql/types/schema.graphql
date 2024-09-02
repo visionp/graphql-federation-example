@@ -18,7 +18,7 @@ type User @key(fields: "id") {
     name: String!
     email: String!
     profile: [Profile!]!
-    UserFeatureFlags: [UserFeatureFlag!]!
+    userFeatureFlags: [UserFeatureFlag!]!
 }
 
 type Profile @key(fields: "id") {

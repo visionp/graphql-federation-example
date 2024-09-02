@@ -142,8 +142,8 @@ class TypeRegistry
 }),
             'type' => function() { return Type::nonNull(function() { return new ListOfType(function() { return Type::nonNull(function() { return $this->getType('Profile'); }); }); }); },
             'args' => [],
-        ]),'UserFeatureFlags' => new FieldDefinition([
-            'name' => 'UserFeatureFlags',
+        ]),'userFeatureFlags' => new FieldDefinition([
+            'name' => 'userFeatureFlags',
             'description' => NULL,
             'deprecationReason' => NULL,
             'resolve' => (function ($rootValue, $args, $context, $info) {

@@ -11,13 +11,15 @@ final readonly class UserFeatureFlagMapper
 {
     public static function map(?UserFeatureFlag $userFeatureFlag): ?UserFeatureFlagType
     {
+        error_log('UserFeatureFlagMapper::map');
         if ($userFeatureFlag === null) {
             return null;
         }
 
-        return new UserFeatureFlagType(
-            id: $userFeatureFlag->id,
-            name: $userFeatureFlag->name,
-        );
+        $type = new UserFeatureFlagType();
+        $type->id = $userFeatureFlag->id;
+        $type->name = $userFeatureFlag->name;
+
+        return $type;
     }
 }
