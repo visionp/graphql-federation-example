@@ -8,8 +8,8 @@ const { ApolloGateway, IntrospectAndCompose, LocalGraphQLDataSource } = require(
 const gateway = new ApolloGateway({
     supergraphSdl: new IntrospectAndCompose({
         subgraphs: [
-            { name: 'php', url: 'http://graphql-nginx:80/graphql' },
-            { name: 'golang', url: 'http://graphql-golang:8080/graphql' },
+            { name: 'user-service', url: 'http://user-service:80/graphql' },
+            { name: 'book-service', url: 'http://book-service:8080/graphql' },
         ],
     }),
 });

@@ -216,7 +216,10 @@ class TypeRegistry
             'name' => 'user',
             'description' => NULL,
             'deprecationReason' => NULL,
-            // No resolver. Default used
+            'resolve' => (function ($rootValue, $args, $context, $info) {
+    
+    return $this->container->get('UserService\Application\GraphQL\Resolver\UserFeatureFlag\UserResolver')($rootValue, $args, $context, $info);
+}),
             'type' => function() { return Type::nonNull(function() { return $this->getType('User'); }); },
             'args' => [],
         ])],
