@@ -1,11 +1,11 @@
 FROM golang:1.22
 WORKDIR /app
 
-COPY ./golang/go.mod ./golang/go.sum ./
+COPY ./book-service/go.mod ./book-service/go.sum ./
 RUN go mod download
-ADD ./golang .
-RUN go build -o graphql-golang .
+ADD ./book-service .
+RUN go build -o gbook-service .
 
 EXPOSE 8080
 
-CMD ["./graphql-golang", "api"]
+CMD ["./book-service", "api"]
