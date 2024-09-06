@@ -2,5 +2,10 @@
 
 package model
 
-type Query struct {
+type User struct {
+	ID    string  `json:"id"`
+	Email string  `json:"email"`
+	Books []*Book `json:"books,omitempty"`
 }
+
+func (User) IsEntity() {}

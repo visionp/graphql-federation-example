@@ -1,6 +1,17 @@
 extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@extends", "@external", "@requires", "@provides", "@shareable"])
 
-
 type Query @extends {
-    payments: Int!
+    books: [Book!]!
+}
+
+type User @key(fields: "id") @extends {
+    id: ID! @external
+    email : String! @external
+    books: [Book] @requires(fields: "email")
+}
+
+type Book @key(fields: "id") {
+    id: ID!
+    title: String!
+    author: User!
 }

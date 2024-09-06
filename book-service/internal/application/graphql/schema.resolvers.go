@@ -6,15 +6,26 @@ package graphql
 
 import (
 	"context"
+	"fmt"
 	"graphql-golang/internal/application/graphql/generated"
+	"graphql-golang/internal/application/graphql/model"
 )
 
-// Payments is the resolver for the payments field.
-func (r *queryResolver) Payments(ctx context.Context) (int, error) {
-	return r.PaymentUseCase.Payments(), nil
+// Author is the resolver for the author field.
+func (r *bookResolver) Author(ctx context.Context, obj *model.Book) (*model.User, error) {
+	panic(fmt.Errorf("not implemented: Author - author"))
 }
+
+// Books is the resolver for the books field.
+func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
+	panic(fmt.Errorf("not implemented: Books - books"))
+}
+
+// Book returns generated.BookResolver implementation.
+func (r *Resolver) Book() generated.BookResolver { return &bookResolver{r} }
 
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
+type bookResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
