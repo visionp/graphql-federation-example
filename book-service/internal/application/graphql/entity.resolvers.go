@@ -6,19 +6,23 @@ package graphql
 
 import (
 	"context"
-	"fmt"
 	"graphql-golang/internal/application/graphql/generated"
 	"graphql-golang/internal/application/graphql/model"
 )
 
 // FindBookByID is the resolver for the findBookByID field.
 func (r *entityResolver) FindBookByID(ctx context.Context, id string) (*model.Book, error) {
-	panic(fmt.Errorf("not implemented: FindBookByID - findBookByID"))
+	return &model.Book{
+		ID:    id,
+		Title: "Book 1",
+	}, nil
 }
 
 // FindUserByID is the resolver for the findUserByID field.
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: FindUserByID - findUserByID"))
+	return &model.User{
+		ID: "1",
+	}, nil
 }
 
 // Entity returns generated.EntityResolver implementation.
