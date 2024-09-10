@@ -19,7 +19,7 @@ func (r *bookResolver) Summery(ctx context.Context, obj *model.Book) (string, er
 // Books is the resolver for the books field.
 func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
 	books := []*model.Book{
-		&model.Book{
+		{
 			ID:    "1",
 			Title: "Book 1",
 			Author: model.User{
@@ -27,7 +27,7 @@ func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
 				Email: "b1@test.com",
 			},
 		},
-		&model.Book{
+		{
 			ID:    "2",
 			Title: "Book 2",
 			Author: model.User{
@@ -35,7 +35,7 @@ func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
 				Email: "b2@test.com",
 			},
 		},
-		&model.Book{
+		{
 			ID:    "3",
 			Title: "Book 3",
 			Author: model.User{
@@ -50,7 +50,25 @@ func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
 
 // Books is the resolver for the books field.
 func (r *userResolver) Books(ctx context.Context, obj *model.User) ([]*model.Book, error) {
-	panic(fmt.Errorf("not implemented: Books - books"))
+	books := []*model.Book{
+		{
+			ID:     "1",
+			Title:  "Book 1",
+			Author: *obj,
+		},
+		{
+			ID:     "2",
+			Title:  "Book 2",
+			Author: *obj,
+		},
+		{
+			ID:     "3",
+			Title:  "Book 3",
+			Author: *obj,
+		},
+	}
+
+	return books, nil
 }
 
 // Book returns generated.BookResolver implementation.
