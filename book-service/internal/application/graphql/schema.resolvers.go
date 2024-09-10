@@ -11,14 +11,41 @@ import (
 	"graphql-golang/internal/application/graphql/model"
 )
 
-// Author is the resolver for the author field.
-func (r *bookResolver) Author(ctx context.Context, obj *model.Book) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: Author - author"))
+// Summery is the resolver for the summery field.
+func (r *bookResolver) Summery(ctx context.Context, obj *model.Book) (string, error) {
+	return fmt.Sprintf("Sumery of %s", obj.Author.Email), nil
 }
 
 // Books is the resolver for the books field.
 func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
-	panic(fmt.Errorf("not implemented: Books - books"))
+	books := []*model.Book{
+		&model.Book{
+			ID:    "1",
+			Title: "Book 1",
+			Author: model.User{
+				ID:    "1",
+				Email: "b1@test.com",
+			},
+		},
+		&model.Book{
+			ID:    "2",
+			Title: "Book 2",
+			Author: model.User{
+				ID:    "2",
+				Email: "b2@test.com",
+			},
+		},
+		&model.Book{
+			ID:    "3",
+			Title: "Book 3",
+			Author: model.User{
+				ID:    "2",
+				Email: "b2@test.com",
+			},
+		},
+	}
+
+	return books, nil
 }
 
 // Books is the resolver for the books field.

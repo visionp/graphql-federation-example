@@ -97,6 +97,10 @@ func (ec *executionContext) __resolve_entities(ctx context.Context, representati
 					return fmt.Errorf(`resolving Entity "Book": %w`, err)
 				}
 
+				entity.Author.Email, err = ec.unmarshalNString2string(ctx, rep["author"].(map[string]interface{})["email"])
+				if err != nil {
+					return err
+				}
 				list[idx[i]] = entity
 				return nil
 			}

@@ -1,8 +1,9 @@
 package model
 
 type Book struct {
-	ID    string `json:"id"`
-	Title string `json:"title"`
+	ID     string `json:"id"`
+	Title  string `json:"title"`
+	Author User   `json:"author"`
 }
 
 func (Book) IsEntity() {}
