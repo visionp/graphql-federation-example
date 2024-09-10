@@ -13,7 +13,7 @@ import (
 
 // Summery is the resolver for the summery field.
 func (r *bookResolver) Summery(ctx context.Context, obj *model.Book) (string, error) {
-	return fmt.Sprintf("Sumery of %s", obj.Author.Email), nil
+	return fmt.Sprintf("Summery of %s", obj.Author.Email), nil
 }
 
 // Books is the resolver for the books field.

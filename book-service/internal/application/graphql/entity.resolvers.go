@@ -6,6 +6,7 @@ package graphql
 
 import (
 	"context"
+	"fmt"
 	"graphql-golang/internal/application/graphql/generated"
 	"graphql-golang/internal/application/graphql/model"
 )
@@ -14,14 +15,14 @@ import (
 func (r *entityResolver) FindBookByID(ctx context.Context, id string) (*model.Book, error) {
 	return &model.Book{
 		ID:    id,
-		Title: "Book 1",
+		Title: fmt.Sprintf("Book %s", id),
 	}, nil
 }
 
 // FindUserByID is the resolver for the findUserByID field.
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
 	return &model.User{
-		ID: "1",
+		ID: id,
 	}, nil
 }
 
