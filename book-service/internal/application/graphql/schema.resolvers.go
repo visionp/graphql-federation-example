@@ -21,11 +21,20 @@ func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
 	panic(fmt.Errorf("not implemented: Books - books"))
 }
 
+// Books is the resolver for the books field.
+func (r *userResolver) Books(ctx context.Context, obj *model.User) ([]*model.Book, error) {
+	panic(fmt.Errorf("not implemented: Books - books"))
+}
+
 // Book returns generated.BookResolver implementation.
 func (r *Resolver) Book() generated.BookResolver { return &bookResolver{r} }
 
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
+// User returns generated.UserResolver implementation.
+func (r *Resolver) User() generated.UserResolver { return &userResolver{r} }
+
 type bookResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
+type userResolver struct{ *Resolver }

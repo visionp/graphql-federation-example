@@ -7,7 +7,7 @@ type Query @extends {
 type User @key(fields: "id") @extends {
     id: ID! @external
     email : String! @external
-    books: [Book] @requires(fields: "email")
+    books: [Book!]!
 }
 
 type Book @key(fields: "id") {
