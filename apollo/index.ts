@@ -1,27 +1,55 @@
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
-// import {readFileSync} from "fs";
-// const {buildSubgraphSchema} = require("@apollo/subgraph");
-// import { parse } from "graphql";
-const { ApolloGateway, IntrospectAndCompose, LocalGraphQLDataSource } = require('@apollo/gateway');
+// @ts-ignore
+import {ApolloServer} from '@apollo/server';
+// @ts-ignore
+import {startStandaloneServer} from '@apollo/server/standalone';
+import {GraphQLRequest, GraphQLRequestContext} from 'apollo-server-core';
+
+const {ApolloGateway, IntrospectAndCompose, RemoteGraphQLDataSource} = require('@apollo/gateway');
+
 
 const gateway = new ApolloGateway({
     supergraphSdl: new IntrospectAndCompose({
         subgraphs: [
-            { name: 'user-service', url: 'http://user-service-nginx:80/graphql' },
-            { name: 'book-service', url: 'http://book-service:8080/graphql' },
+            {name: 'user-service', url: 'http://user-service-nginx:80/graphql'},
+            {name: 'book-service', url: 'http://book-service:8080/graphql'},
         ],
     }),
+    buildService: ({name, url}: { name: string, url: string }) => {
+        return new RemoteGraphQLDataSource({
+            url,
+            willSendRequest({request, context}: { request: GraphQLRequest, context: any }) {
+                if (request.http && request.http.headers) {
+                    request.http.headers.set('x-service-name', 'TEST_APOLLO');
+                    if (context.user) {
+                        request.http.headers.set('x-token', context.user.token);
+                        request.http.headers.set('x-id-user', context.user.id);
+                        request.http.headers.set('x-name-user', context.user.name);
+                    }
+                }
+            }
+        });
+    },
 });
 
 const server = new ApolloServer({
     gateway,
 });
 
-
+// @ts-ignore
 async function initServer() {
-    const { url } = await startStandaloneServer(server);
-    console.log(`🚀  Server ready at ${url}`);
+    const {url} = await startStandaloneServer(server, {
+        context: async ({req, res}) => {
+            const token = req.headers.authorization || '';
+            let user = usersRepo[token] || null;
+            return {user: user};
+        },
+    });
 }
+
+let usersRepo: { [key: string]: { id: number, name: string } } = {
+    "a": {id: 1, name: 'John Doe'},
+    "b": {id: 2, name: 'dr. Who'},
+    "c": {id: 2, name: 'Anna'},
+};
 
 initServer();
