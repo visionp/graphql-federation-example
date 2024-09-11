@@ -7,7 +7,9 @@ use GraphQL\Server\ServerConfig;
 use GraphQL\Server\StandardServer;
 use GraphQL\Type\Schema;
 use GraphQL\Validator\Rules;
+use GraphqlApp\Application\GraphQL\Context;
 use GraphqlApp\Application\GraphQL\ErrorHandler\ErrorHandler;
+use GraphqlApp\Domain\Entity\Identity;
 use Psr\Log\LoggerInterface;
 use UserService\Application\GraphQL\TypeRegistry;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
@@ -49,11 +51,24 @@ class GraphqlController extends AbstractController
             ]))
             ->setRootValue([])
             ->setValidationRules($validatorRules)
+            ->setContext(new Context($this->extractIdentity($request)))
             ->setErrorsHandler(new ErrorHandler($this->logger))
         ;
 
         $server = new StandardServer($config);
         $result = $server->executePsrRequest($psrRequest);
         return new JsonResponse($result);
+    }
+
+    private function extractIdentity(Request $request): ?Identity
+    {
+        if (!$request->headers->has('x-id-user')) {
+            return null;
+        }
+
+        return new Identity(
+            id: $request->headers->get('x-id-user'),
+            name: $request->headers->get('x-name-user'),
+        );
     }
 }
