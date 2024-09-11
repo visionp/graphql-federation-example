@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GraphqlApp\Application\GraphQL;
+namespace UserService\Application\GraphQL;
 
-use GraphqlApp\Domain\Entity\Identity;
+use UserService\Domain\Entity\Identity;
 
 final readonly class Context
 {

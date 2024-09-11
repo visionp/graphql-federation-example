@@ -5,6 +5,7 @@ namespace UserService\Application\GraphQL\Resolver\User;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use Axtiva\FlexibleGraphql\Resolver\ResolverInterface;
+use UserService\Application\GraphQL\Context;
 use UserService\Application\GraphQL\Mapper\UserFeatureFlagsMapper;
 use UserService\Application\GraphQL\Model\UserType;
 use UserService\Application\GraphQL\Model\UserFeatureFlagType;
@@ -25,7 +26,7 @@ final readonly class UserFeatureFlagsResolver implements ResolverInterface
     /**
      * @param UserType $rootValue
      * @param $args
-     * @param $context
+     * @param Context $context
      * @param ResolveInfo $info
      * @return UserFeatureFlagType[]|\Generator
      */

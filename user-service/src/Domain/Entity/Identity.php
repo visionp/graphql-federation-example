@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GraphqlApp\Domain\Entity;
+namespace UserService\Domain\Entity;
 
 final readonly class Identity
 {
