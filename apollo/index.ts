@@ -50,7 +50,7 @@ async function initServer() {
 let usersRepo: { [key: string]: { id: number, name: string, roles: string[]} } = {
     "a": {id: 1, name: 'John Doe', roles: ['user']},
     "b": {id: 2, name: 'dr. Who', roles: ['admin']},
-    "c": {id: 2, name: 'Anna', roles: ['user']},
+    "c": {id: 2, name: 'Anna', roles: ['user', 'admin']},
 };
 
 initServer();

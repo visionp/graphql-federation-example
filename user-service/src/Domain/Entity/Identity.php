@@ -12,7 +12,12 @@ final readonly class Identity
     public function __construct(
         public ?int $id,
         public string $name,
-        array $roles,
+        public array $roles,
     ) {
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return in_array($role, $this->roles, true);
     }
 }

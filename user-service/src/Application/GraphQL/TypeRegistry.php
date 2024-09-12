@@ -136,10 +136,18 @@ class TypeRegistry
             'name' => 'profile',
             'description' => NULL,
             'deprecationReason' => NULL,
-            'resolve' => (function ($rootValue, $args, $context, $info) {
+            'resolve' => function($rootValue, $args, $context, $info) {
+                        return $this->container->get('UserService\Application\GraphQL\Directive\HasRoleDirective')(
+                        (function ($rootValue, $args, $context, $info) {
     
     return $this->container->get('UserService\Application\GraphQL\Resolver\User\ProfileResolver')($rootValue, $args, $context, $info);
-}),
+}), 
+                        array (
+  'role' => 'admin',
+),
+                        $rootValue, $args, $context, $info
+                        );
+                    },
             'type' => function() { return $this->getType('Profile'); },
             'args' => [],
         ]),'userFeatureFlags' => new FieldDefinition([
@@ -216,18 +224,10 @@ class TypeRegistry
             'name' => 'user',
             'description' => NULL,
             'deprecationReason' => NULL,
-            'resolve' => function($rootValue, $args, $context, $info) {
-                        return $this->container->get('UserService\Application\GraphQL\Directive\HasRoleDirective')(
-                        (function ($rootValue, $args, $context, $info) {
+            'resolve' => (function ($rootValue, $args, $context, $info) {
     
     return $this->container->get('UserService\Application\GraphQL\Resolver\UserFeatureFlag\UserResolver')($rootValue, $args, $context, $info);
-}), 
-                        array (
-  'role' => 'admin',
-),
-                        $rootValue, $args, $context, $info
-                        );
-                    },
+}),
             'type' => function() { return Type::nonNull(function() { return $this->getType('User'); }); },
             'args' => [],
         ])],

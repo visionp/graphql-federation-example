@@ -18,7 +18,7 @@ type User @key(fields: "id") {
     id: ID!
     name: String!
     email: String!
-    profile: Profile
+    profile: Profile @hasRole(role: "admin")
     userFeatureFlags: [UserFeatureFlag!]!
 }
 
@@ -31,5 +31,5 @@ type Profile @key(fields: "id") {
 type UserFeatureFlag @key(fields: "id") {
     id: ID!
     name: String!
-    user: User! @hasRole(role: "admin")
+    user: User!
 }
