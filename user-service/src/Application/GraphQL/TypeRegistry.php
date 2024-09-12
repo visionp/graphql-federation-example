@@ -216,10 +216,18 @@ class TypeRegistry
             'name' => 'user',
             'description' => NULL,
             'deprecationReason' => NULL,
-            'resolve' => (function ($rootValue, $args, $context, $info) {
+            'resolve' => function($rootValue, $args, $context, $info) {
+                        return $this->container->get('UserService\Application\GraphQL\Directive\HasRoleDirective')(
+                        (function ($rootValue, $args, $context, $info) {
     
     return $this->container->get('UserService\Application\GraphQL\Resolver\UserFeatureFlag\UserResolver')($rootValue, $args, $context, $info);
-}),
+}), 
+                        array (
+  'role' => 'admin',
+),
+                        $rootValue, $args, $context, $info
+                        );
+                    },
             'type' => function() { return Type::nonNull(function() { return $this->getType('User'); }); },
             'args' => [],
         ])],
@@ -433,7 +441,10 @@ class TypeRegistry
             'isRepeatable' => false,
             'locations' => ['FIELD_DEFINITION'],
             'args' => [
-                
+                [
+            'name' => 'role',
+            'type' => function() { return Type::nonNull(function() { return Type::string(); }); },
+        ]
             ],
         ]);
         }
