@@ -8,6 +8,7 @@ directive @requires(fields: FieldSet!) on FIELD_DEFINITION
 directive @provides(fields: FieldSet!) on FIELD_DEFINITION
 directive @key(fields: FieldSet!) on OBJECT | INTERFACE
 directive @extends on OBJECT | INTERFACE
+directive @hasRole on FIELD_DEFINITION
 
 type Query @extends {
     getUsers: [User!]!

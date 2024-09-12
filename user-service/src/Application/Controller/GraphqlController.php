@@ -69,6 +69,7 @@ class GraphqlController extends AbstractController
         return new Identity(
             id: $request->headers->get('x-id-user'),
             name: $request->headers->get('x-name-user'),
+            roles: json_decode($request->headers->get('x-roles-user'), true),
         );
     }
 }

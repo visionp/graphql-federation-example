@@ -24,6 +24,7 @@ const gateway = new ApolloGateway({
                         request.http.headers.set('x-token', context.user.token);
                         request.http.headers.set('x-id-user', context.user.id);
                         request.http.headers.set('x-name-user', context.user.name);
+                        request.http.headers.set('x-roles-user', context.user.roles);
                     }
                 }
             }
@@ -46,10 +47,10 @@ async function initServer() {
     });
 }
 
-let usersRepo: { [key: string]: { id: number, name: string } } = {
-    "a": {id: 1, name: 'John Doe'},
-    "b": {id: 2, name: 'dr. Who'},
-    "c": {id: 2, name: 'Anna'},
+let usersRepo: { [key: string]: { id: number, name: string, roles: string[]} } = {
+    "a": {id: 1, name: 'John Doe', roles: ['user']},
+    "b": {id: 2, name: 'dr. Who', roles: ['admin']},
+    "c": {id: 2, name: 'Anna', roles: ['user']},
 };
 
 initServer();

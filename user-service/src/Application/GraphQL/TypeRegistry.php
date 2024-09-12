@@ -423,6 +423,26 @@ class TypeRegistry
         
 
 
+    public function directive_hasRole()
+    {
+        static $directive = null;
+        if ($directive === null) {
+            $directive = new Directive([
+            'name' => 'hasRole',
+            'description' => NULL,
+            'isRepeatable' => false,
+            'locations' => ['FIELD_DEFINITION'],
+            'args' => [
+                
+            ],
+        ]);
+        }
+        
+        return $directive;
+    }
+        
+
+
     public function directive_shareable()
     {
         static $directive = null;
@@ -710,7 +730,7 @@ class TypeRegistry
 
     public function getDirectives()
     {
-        return [$this->directive_link(),$this->directive_external(),$this->directive_requires(),$this->directive_provides(),$this->directive_key(),$this->directive_extends(),$this->directive_shareable(),$this->directive_inaccessible(),$this->directive_override(),$this->directive_tag(),$this->directive_federation__tag(),$this->directive_federation__shareable(),$this->directive_federation__inaccessible(),$this->directive_federation__override(),$this->directive_federation__external(),$this->directive_federation__requires(),$this->directive_federation__provides(),$this->directive_federation__key(),$this->directive_federation__extends()];
+        return [$this->directive_link(),$this->directive_external(),$this->directive_requires(),$this->directive_provides(),$this->directive_key(),$this->directive_extends(),$this->directive_hasRole(),$this->directive_shareable(),$this->directive_inaccessible(),$this->directive_override(),$this->directive_tag(),$this->directive_federation__tag(),$this->directive_federation__shareable(),$this->directive_federation__inaccessible(),$this->directive_federation__override(),$this->directive_federation__external(),$this->directive_federation__requires(),$this->directive_federation__provides(),$this->directive_federation__key(),$this->directive_federation__extends()];
     }
         
 
