@@ -1,0 +1,10 @@
+federation_version: 2
+subgraphs:
+  user-service:
+    routing_url: http://user-service-nginx:80/graphql
+    schema:
+      file: ./user-schema.graphql
+  book-service:
+    routing_url: http://book-service:8080/graphql
+    schema:
+      file: ./book-schema.graphql

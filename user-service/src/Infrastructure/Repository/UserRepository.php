@@ -27,6 +27,19 @@ final readonly class UserRepository implements UserRepositoryInterface
         return $this->users[$id] ?? null;
     }
 
+    public function findByIds(string ...$ids): UserCollection
+    {
+       $users = [];
+       foreach ($ids as $userId) {
+           $user = $this->findById($userId);
+           if ($user) {
+               $users[] = $user;
+           }
+       }
+
+       return new UserCollection($users);
+    }
+
     private function initUsers(): array
     {
         $users = [];

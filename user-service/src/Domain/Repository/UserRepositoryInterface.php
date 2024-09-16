@@ -9,4 +9,5 @@ interface UserRepositoryInterface
 {
     public function findAll(): UserCollection;
     public function findById(string $id): ?User;
+    public function findByIds(string ...$ids): UserCollection;
 }

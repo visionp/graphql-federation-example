@@ -20,6 +20,11 @@ final readonly class UserUseCase
         return $this->userRepository->findById($id);
     }
 
+    public function findByIds(string ...$id): UserCollection
+    {
+        return $this->userRepository->findByIds(...$id);
+    }
+
     public function getAllUsers(): UserCollection
     {
         return $this->userRepository->findAll();
