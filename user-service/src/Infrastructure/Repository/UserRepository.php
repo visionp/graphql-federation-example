@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace UserService\Infrastructure\Repository;
 
+use GraphqlApp\Domain\Enum\UserGender;
 use UserService\Domain\Entity\User;
 use UserService\Domain\Repository\UserRepositoryInterface;
 use UserService\Domain\Collection\UserCollection;
@@ -44,21 +45,42 @@ final readonly class UserRepository implements UserRepositoryInterface
     {
         $users = [];
         $names = [
-            'John',
-            'Kate',
-            'Mike',
-            'Jane',
-            'Doe',
-            'Smith',
-            'Brown',
-            'Wilson',
-            'Taylor',
-            'Lee',
+            'John' => [
+                'gender' => UserGender::MALE,
+            ],
+            'Kate' => [
+                'gender' => UserGender::FEMALE,
+            ],
+            'Mike' => [
+                'gender' => UserGender::MALE,
+            ],
+            'Jane' => [
+                'gender' => UserGender::FEMALE,
+            ],
+            'Doe' => [
+                'gender' => UserGender::MALE,
+            ],
+            'Smith' => [
+                'gender' => UserGender::MALE,
+            ],
+            'Brown' => [
+                'gender' => UserGender::MALE,
+            ],
+            'Wilson' => [
+                'gender' => UserGender::MALE,
+            ],
+            'Taylor' => [
+                'gender' => UserGender::FEMALE,
+            ],
+            'Lee' => [
+                'gender' => UserGender::MALE,
+            ],
         ];
-        for ($i = 0; $i < 10; $i++) {
-            $name = $names[$i];
+
+        $i = 0;
+        foreach ($names as $name => $data) {
             $id = (string)++$i;
-            $users[$id] = new User($id, $name, sprintf("%s@test.com", $name));
+            $users[$id] = new User($id, $name, sprintf("%s@test.com", $name), $data['gender']);
         }
 
         return $users;

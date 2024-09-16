@@ -20,6 +20,7 @@ type User @key(fields: "id") {
     email: String!
     profile: Profile @hasRole(role: "admin")
     userFeatureFlags: [UserFeatureFlag!]!
+    gender: UserGender!
 }
 
 type Profile @key(fields: "id") {
@@ -32,4 +33,9 @@ type UserFeatureFlag @key(fields: "id") {
     id: ID!
     name: String!
     user: User!
+}
+
+enum UserGender {
+    MALE
+    FEMALE
 }

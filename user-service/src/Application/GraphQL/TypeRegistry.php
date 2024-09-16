@@ -160,6 +160,13 @@ class TypeRegistry
 }),
             'type' => function() { return Type::nonNull(function() { return new ListOfType(function() { return Type::nonNull(function() { return $this->getType('UserFeatureFlag'); }); }); }); },
             'args' => [],
+        ]),'gender' => new FieldDefinition([
+            'name' => 'gender',
+            'description' => NULL,
+            'deprecationReason' => NULL,
+            // No resolver. Default used
+            'type' => function() { return Type::nonNull(function() { return $this->getType('UserGender'); }); },
+            'args' => [],
         ])],
         ]);
             }
@@ -231,6 +238,28 @@ class TypeRegistry
             'type' => function() { return Type::nonNull(function() { return $this->getType('User'); }); },
             'args' => [],
         ])],
+        ]);
+            }
+        
+
+
+            public function UserGender()
+            {
+                return new EnumType([
+        'name' => 'UserGender',
+        'description' => NULL,
+        'values' => ['MALE' => [
+            'name' => 'MALE', 
+            'value' => 'MALE',
+            'description' => NULL,
+            'deprecationReason' => NULL,
+            ],
+'FEMALE' => [
+            'name' => 'FEMALE', 
+            'value' => 'FEMALE',
+            'description' => NULL,
+            'deprecationReason' => NULL,
+            ]],
         ]);
             }
         
