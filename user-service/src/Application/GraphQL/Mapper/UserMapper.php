@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace UserService\Application\GraphQL\Mapper;
 
+use UserService\Application\GraphQL\Model\UserGenderEnum;
 use UserService\Application\GraphQL\Model\UserType;
 use UserService\Domain\Entity\User;
 
@@ -19,6 +20,7 @@ final readonly class UserMapper
         $userType->id = $user->id;
         $userType->name = $user->name;
         $userType->email = $user->email;
+        $userType->gender = new UserGenderEnum($user->gender->name);
 
         return $userType;
     }
