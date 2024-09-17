@@ -5,6 +5,6 @@ https://www.apollographql.com/docs/rover/commands/supergraphs/#yaml-configuratio
 
 
 
-
-docker build -t rover -f ./docker/rover/Dockerfile .
-docker run -it --rm -v ./:/app rover
+Composer federation schema:
+```docker build -t rover -f ./docker/rover/Dockerfile .```
+```docker run -it --rm -v ./:/app rover```
