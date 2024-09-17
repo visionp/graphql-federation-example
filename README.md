@@ -1,10 +1,13 @@
-# graphql-federation-example
+# graphql-federation links
 
 https://www.apollographql.com/docs/federation/federated-schemas/composition
 https://www.apollographql.com/docs/rover/commands/supergraphs/#yaml-configuration-file
 
 
 
-Composer federation schema:
+
+# Composer federation schema:
+
 ```docker build -t rover -f ./docker/rover/Dockerfile .```
+
 ```docker run -it --rm -v ./:/app rover```
