@@ -2,8 +2,8 @@
 import {ApolloServer} from '@apollo/server';
 // @ts-ignore
 import {startStandaloneServer} from '@apollo/server/standalone';
-import {GraphQLRequest, GraphQLRequestContext} from 'apollo-server-core';
-
+import {GraphQLRequest} from 'apollo-server-core';
+import { depthLimit } from "@graphile/depth-limit";
 const {ApolloGateway, IntrospectAndCompose, RemoteGraphQLDataSource} = require('@apollo/gateway');
 
 
@@ -34,6 +34,7 @@ const gateway = new ApolloGateway({
 
 const server = new ApolloServer({
     gateway,
+    validationRules: [depthLimit({maxDepth: 3})],
 });
 
 // @ts-ignore

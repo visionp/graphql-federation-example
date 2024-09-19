@@ -1,6 +1,5 @@
-FROM node:latest
+FROM node:22.8.0-slim
 WORKDIR /app
-RUN curl -sSL https://rover.apollo.dev/nix/latest | sh
 COPY ./apollo /app
 RUN npm install
 CMD ["npm", "start"]
