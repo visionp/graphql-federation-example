@@ -5,7 +5,9 @@ https://www.apollographql.com/docs/rover/commands/supergraphs/#yaml-configuratio
 https://www.apollographql.com/blog/9-ways-to-secure-your-graphql-api-security-checklist
 https://github.com/apollographql/router
 https://www.apollographql.com/docs/technotes/TN0021-graph-security/
-
+https://www.apollographql.com/docs/router/
+https://www.apollographql.com/docs/apollo-server/performance/apq/
+https://gqlgen.com/reference/dataloaders/
 
 # Composer federation schema:
 

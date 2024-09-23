@@ -5,6 +5,7 @@ import {startStandaloneServer} from '@apollo/server/standalone';
 import {GraphQLRequest} from 'apollo-server-core';
 import { depthLimit } from "@graphile/depth-limit";
 const {ApolloGateway, IntrospectAndCompose, RemoteGraphQLDataSource} = require('@apollo/gateway');
+import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 
 
 const gateway = new ApolloGateway({
@@ -14,6 +15,12 @@ const gateway = new ApolloGateway({
             {name: 'book-service', url: 'http://book-service:8080/graphql'},
         ],
     }),
+    introspection: true,
+    playground: {
+        settings: {
+            'editor.theme': 'light',
+        },
+    },
     buildService: ({name, url}: { name: string, url: string }) => {
         return new RemoteGraphQLDataSource({
             url,
@@ -35,6 +42,10 @@ const gateway = new ApolloGateway({
 const server = new ApolloServer({
     gateway,
     validationRules: [depthLimit({maxDepth: 3})],
+    persistedQueries:{
+        cache: new InMemoryLRUCache(),
+        ttl: 600,
+    },
 });
 
 // @ts-ignore

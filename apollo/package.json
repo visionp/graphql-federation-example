@@ -5,7 +5,9 @@
     "@apollo/subgraph": "^2.8.4",
     "@graphile/depth-limit": "^0.3.1",
     "apollo-server-core": "^3.13.0",
+    "crypto": "^1.0.1",
     "graphql": "^16.9.0",
+    "lru-cache": "^11.0.1",
     "ts-node": "^10.9.2"
   },
   "name": "graphql",
@@ -17,5 +19,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@apollo/generate-persisted-query-manifest": "^1.2.2"
+  }
 }
