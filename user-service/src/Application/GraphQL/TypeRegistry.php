@@ -62,6 +62,19 @@ class TypeRegistry
         
 
 
+            public function DateTime()
+            {
+                return new CustomScalarType([
+            'name' => 'DateTime',
+            'description' => NULL,
+            'serialize' => function($value) {return ($this->container->get('UserService\Application\GraphQL\Scalar\DateTimeScalar'))->serialize($value);},
+            'parseValue' => function($value) {return ($this->container->get('UserService\Application\GraphQL\Scalar\DateTimeScalar'))->parseValue($value);},
+            'parseLiteral' => function($value, $variables) {return ($this->container->get('UserService\Application\GraphQL\Scalar\DateTimeScalar'))->parseLiteral($value, $variables);},
+        ]);
+            }
+        
+
+
             public function Query()
             {
                 return new ObjectType([
@@ -166,6 +179,13 @@ class TypeRegistry
             'deprecationReason' => NULL,
             // No resolver. Default used
             'type' => function() { return Type::nonNull(function() { return $this->getType('UserGender'); }); },
+            'args' => [],
+        ]),'createdAt' => new FieldDefinition([
+            'name' => 'createdAt',
+            'description' => NULL,
+            'deprecationReason' => NULL,
+            // No resolver. Default used
+            'type' => function() { return Type::nonNull(function() { return $this->getType('DateTime'); }); },
             'args' => [],
         ])],
         ]);

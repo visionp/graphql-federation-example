@@ -10,6 +10,8 @@ directive @key(fields: FieldSet!) on OBJECT | INTERFACE
 directive @extends on OBJECT | INTERFACE
 directive @hasRole(role: String!) on FIELD_DEFINITION
 
+scalar DateTime
+
 type Query @extends {
     getUsers: [User!]!
 }
@@ -21,6 +23,7 @@ type User @key(fields: "id") {
     profile: Profile @hasRole(role: "admin")
     userFeatureFlags: [UserFeatureFlag!]!
     gender: UserGender!
+    createdAt: DateTime!
 }
 
 type Profile @key(fields: "id") {

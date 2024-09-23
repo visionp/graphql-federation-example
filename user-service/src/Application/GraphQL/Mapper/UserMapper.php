@@ -21,6 +21,7 @@ final readonly class UserMapper
         $userType->name = $user->name;
         $userType->email = $user->email;
         $userType->gender = new UserGenderEnum($user->gender->name);
+        $userType->createdAt = new \DateTimeImmutable();
 
         return $userType;
     }

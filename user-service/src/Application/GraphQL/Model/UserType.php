@@ -17,4 +17,5 @@ final class UserType implements _EntityInterface
     public string $name;
     public string $email;
     public UserGenderEnum $gender;
+    public ?\DateTimeImmutable $createdAt;
 }
