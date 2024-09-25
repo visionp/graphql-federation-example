@@ -24,7 +24,8 @@ func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
 
 // Books is the resolver for the books field.
 func (r *userResolver) Books(ctx context.Context, obj *model.User) ([]*model.Book, error) {
-	panic(fmt.Errorf("not implemented: Books - books"))
+	books, err := r.bookUseCase.FindByAuthorID(obj.ID)
+	return mapBooksToTypes(books), err
 }
 
 // Book returns generated.BookResolver implementation.
@@ -39,13 +40,3 @@ func (r *Resolver) User() generated.UserResolver { return &userResolver{r} }
 type bookResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
 type userResolver struct{ *Resolver }
-
-// !!! WARNING !!!
-// The code below was going to be deleted when updating resolvers. It has been copied here so you have
-// one last chance to move it out of harms way if you want. There are two reasons this happens:
-//   - When renaming or deleting a resolver the old code will be put in here. You can safely delete
-//     it when you're done.
-//   - You have helper methods in this file. Move them out to keep these resolver files clean.
-func (r *bookResolver) Author(ctx context.Context, obj *model.Book) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: Author - author"))
-}
