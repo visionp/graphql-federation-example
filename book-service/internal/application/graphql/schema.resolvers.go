@@ -16,6 +16,12 @@ func (r *bookResolver) Summery(ctx context.Context, obj *model.Book) (string, er
 	return fmt.Sprintf("Summery of \"%s\". Author email: %s", obj.Title, obj.Author.Email), nil
 }
 
+// RemoveBook is the resolver for the removeBook field.
+func (r *mutationResolver) RemoveBook(ctx context.Context, id string) (bool, error) {
+	err := r.bookUseCase.Remove(id)
+	return err == nil, err
+}
+
 // Books is the resolver for the books field.
 func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
 	books, err := r.bookUseCase.FindAll()
@@ -31,6 +37,9 @@ func (r *userResolver) Books(ctx context.Context, obj *model.User) ([]*model.Boo
 // Book returns generated.BookResolver implementation.
 func (r *Resolver) Book() generated.BookResolver { return &bookResolver{r} }
 
+// Mutation returns generated.MutationResolver implementation.
+func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
+
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
@@ -38,5 +47,6 @@ func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 func (r *Resolver) User() generated.UserResolver { return &userResolver{r} }
 
 type bookResolver struct{ *Resolver }
+type mutationResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
 type userResolver struct{ *Resolver }
