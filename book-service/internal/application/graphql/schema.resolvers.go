@@ -18,57 +18,13 @@ func (r *bookResolver) Summery(ctx context.Context, obj *model.Book) (string, er
 
 // Books is the resolver for the books field.
 func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
-	books := []*model.Book{
-		{
-			ID:    "1",
-			Title: "Book 1",
-			Author: model.User{
-				ID:    "1",
-				Email: "b1@test.com",
-			},
-		},
-		{
-			ID:    "2",
-			Title: "Book 2",
-			Author: model.User{
-				ID:    "2",
-				Email: "b2@test.com",
-			},
-		},
-		{
-			ID:    "3",
-			Title: "Book 3",
-			Author: model.User{
-				ID:    "2",
-				Email: "b2@test.com",
-			},
-		},
-	}
-
-	return books, nil
+	books, err := r.bookUseCase.FindAll()
+	return mapBooksToTypes(books), err
 }
 
 // Books is the resolver for the books field.
 func (r *userResolver) Books(ctx context.Context, obj *model.User) ([]*model.Book, error) {
-	books := []*model.Book{
-		{
-			ID:     "1",
-			Title:  "Book 1",
-			Author: *obj,
-		},
-		{
-			ID:     "2",
-			Title:  "Book 2",
-			Author: *obj,
-		},
-		{
-			ID:     "3",
-			Title:  "Book 3",
-			Author: *obj,
-		},
-	}
-
-	return books, nil
+	panic(fmt.Errorf("not implemented: Books - books"))
 }
 
 // Book returns generated.BookResolver implementation.
@@ -83,3 +39,13 @@ func (r *Resolver) User() generated.UserResolver { return &userResolver{r} }
 type bookResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
 type userResolver struct{ *Resolver }
+
+// !!! WARNING !!!
+// The code below was going to be deleted when updating resolvers. It has been copied here so you have
+// one last chance to move it out of harms way if you want. There are two reasons this happens:
+//   - When renaming or deleting a resolver the old code will be put in here. You can safely delete
+//     it when you're done.
+//   - You have helper methods in this file. Move them out to keep these resolver files clean.
+func (r *bookResolver) Author(ctx context.Context, obj *model.Book) (*model.User, error) {
+	panic(fmt.Errorf("not implemented: Author - author"))
+}

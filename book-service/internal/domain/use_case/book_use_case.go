@@ -24,3 +24,7 @@ func (b *BookUseCase) FindByID(id string) (*entity.Book, error) {
 func (b *BookUseCase) Remove(id string) error {
 	return b.bookRepository.Remove(id)
 }
+
+func (b *BookUseCase) FindByAuthorID(id string) ([]*entity.Book, error) {
+	return b.bookRepository.FindByAuthorID(id)
+}
