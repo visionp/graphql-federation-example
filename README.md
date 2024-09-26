@@ -41,7 +41,7 @@ query {
 <img src="./img/query anatomy.webp"/>
 
 # resolvers
-Резолвери це наший код що використовуюєся для виконання запитів.
+Резолвери це наший код що використовуюється для виконання запитів.
 # types
 # scalar types
 Скалярні типи це прості типи даних, які представляють собою одне значення.
@@ -109,11 +109,18 @@ scalar DateTime
 - Кожен субграф має свою власну GraphQL-схему, яка визначає його частину загальної API. Ці схеми можуть бути незалежними або мати спільні типи, що розширюються або спільно використовуються іншими сервісами.
 
 ### 5. Об'єднання схем (Schema Composition)
-- Це процес, коли GraphQL Gateway збирає та об'єднує схеми від усіх субграфів у єдину, централізовану схему. Цей процес відбувається автоматично і дозволяє побудувати загальну API для клієнтів.
+Це процес, коли GraphQL Gateway збирає та об'єднує схеми від усіх субграфів у єдину, централізовану схему. 
+В нашому example-app для об'єднання схеми використовується Apollo Gateway (що не підходить для проду).
+Також ми можемо створити схему з наших сервісів за допомогою Apollo Rover й в результаті отримаємо `federation-schema.graphql`. 
+
+```docker build -t rover -f ./docker/rover/Dockerfile .```
+
+```docker run -it --rm -v ./:/app rover```
 
 # supergraph
-# data loaders
+
 # schema stitching
+# data loaders
 # schema composition
 # persisted queries
 # depth limit
@@ -132,9 +139,3 @@ https://www.apollographql.com/docs/router/
 https://www.apollographql.com/docs/apollo-server/performance/apq/
 https://gqlgen.com/reference/dataloaders/
 https://evgeniy21.medium.com/%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%BC%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%B0-graphql-58e3aca51684
-
-# Composer federation schema:
-
-```docker build -t rover -f ./docker/rover/Dockerfile .```
-
-```docker run -it --rm -v ./:/app rover```
