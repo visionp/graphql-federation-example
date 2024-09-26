@@ -13,7 +13,7 @@ directive @hasRole(role: String!) on FIELD_DEFINITION
 scalar DateTime
 
 type Query @extends {
-    getUsers: [User!]!
+    getUsers(limit: Int): [User!]!
 }
 
 type User @key(fields: "id") {

@@ -85,11 +85,14 @@ class TypeRegistry
             'description' => NULL,
             'deprecationReason' => NULL,
             'resolve' => (function ($rootValue, $args, $context, $info) {
-    
+    $args = new \UserService\Application\GraphQL\ResolverArgs\Query\GetUsersResolverArgs($args);
     return $this->container->get('UserService\Application\GraphQL\Resolver\Query\GetUsersResolver')($rootValue, $args, $context, $info);
 }),
             'type' => function() { return Type::nonNull(function() { return new ListOfType(function() { return Type::nonNull(function() { return $this->getType('User'); }); }); }); },
-            'args' => [],
+            'args' => ['limit' => [
+            'name' => 'limit',
+            'type' => function() { return Type::int(); },
+        ]],
         ]),'_service' => new FieldDefinition([
             'name' => '_service',
             'description' => NULL,

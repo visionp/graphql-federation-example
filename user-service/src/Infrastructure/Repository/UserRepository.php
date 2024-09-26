@@ -18,8 +18,11 @@ final readonly class UserRepository implements UserRepositoryInterface
         $this->users = $this->initUsers();
     }
 
-    public function findAll(): UserCollection
+    public function findAll(?int $limit = null): UserCollection
     {
+        if ($limit) {
+            return new UserCollection(array_slice($this->users, 0, $limit));
+        }
         return new UserCollection($this->users);
     }
 

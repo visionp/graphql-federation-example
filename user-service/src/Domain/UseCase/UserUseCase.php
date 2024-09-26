@@ -25,8 +25,8 @@ final readonly class UserUseCase
         return $this->userRepository->findByIds(...$id);
     }
 
-    public function getAllUsers(): UserCollection
+    public function getAllUsers(?int $limit = null): UserCollection
     {
-        return $this->userRepository->findAll();
+        return $this->userRepository->findAll($limit);
     }
 }
