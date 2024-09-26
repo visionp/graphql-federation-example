@@ -63,6 +63,7 @@ https://www.apollographql.com/docs/technotes/TN0021-graph-security/
 https://www.apollographql.com/docs/router/
 https://www.apollographql.com/docs/apollo-server/performance/apq/
 https://gqlgen.com/reference/dataloaders/
+https://evgeniy21.medium.com/%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%BC%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%B0-graphql-58e3aca51684
 
 # Composer federation schema:
 
