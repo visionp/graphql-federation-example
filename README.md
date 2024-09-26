@@ -37,6 +37,9 @@ query {
 }
 ```
 Як результат тримаємо список користувачів з їх id та email.
+## Анатомія запиту
+<img src="./img/query anatomy.webp"/>
+
 # types
 # scalar types
 # resolvers
