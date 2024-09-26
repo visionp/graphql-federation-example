@@ -40,10 +40,34 @@ query {
 ## Анатомія запиту
 <img src="./img/query anatomy.webp"/>
 
+# resolvers
+Резолвери це наший код що використовуюєся для виконання запитів.
 # types
 # scalar types
+Скалярні типи це прості типи даних, які представляють собою одне значення.
+Наприклад:
+- Int: A signed 32‐bit integer.
+- Float: A signed double-precision floating-point value.
+- String: A UTF‐8 character sequence.
+- Boolean: true or false.
+- ID: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, defining it as an ID signifies that it is not intended to be human‐readable.
+
+Ми можемо створювати власні скалярні типи, це також допомагає частково валідувати вхідні дані. 
+Як приклад я додав скаляр DateTime в схему user-service.
+```
+scalar DateTime
+```
 # resolvers
 # directives
+Директиви це спеціальні аннотації, які можна додати до схеми, щоб змінити поведінку запитів.
+Деякі директиви вбудовані в GraphQL, наприклад @skip та @include, деякі специфічні для федерації, наприклад, деякі з них:
+- @key
+- @extends
+- @external
+- @requires
+
+Також ми можемо створювати власні директиви.
+
 # graphql-federation
 # supergraph
 # data loaders
@@ -51,6 +75,8 @@ query {
 # schema composition
 # persisted queries
 # depth limit
+# libraries
+https://graphql.org/community/tools-and-libraries/
 
 
 
