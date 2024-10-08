@@ -53,13 +53,13 @@ async function initServer() {
     const {url} = await startStandaloneServer(server, {
         context: async ({req, res}) => {
             const token = req.headers.authorization || '';
-            let user = usersRepo[token] || null;
+            let user = adminRepo[token] || null;
             return {user: user};
         },
     });
 }
 
-let usersRepo: { [key: string]: { id: number, name: string, roles: string[]} } = {
+let adminRepo: { [key: string]: { id: number, name: string, roles: string[]} } = {
     "a": {id: 1, name: 'John Doe', roles: ['user']},
     "b": {id: 2, name: 'dr. Who', roles: ['admin']},
     "c": {id: 2, name: 'Anna', roles: ['user', 'admin']},
