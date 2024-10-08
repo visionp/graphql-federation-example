@@ -13,5 +13,3 @@ RUN ln -s /usr/bin/php /usr/local/bin/php
 #cleaning
 RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-RUN composer install
-
