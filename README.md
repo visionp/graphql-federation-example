@@ -124,6 +124,7 @@ scalar DateTime
 # schema composition
 # persisted queries
 # depth limit
+<img src="./img/deps_limit.png" alt="depth limit"/>
 # libraries
 https://graphql.org/community/tools-and-libraries/
 
