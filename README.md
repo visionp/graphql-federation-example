@@ -131,8 +131,8 @@ https://www.apollographql.com/docs/graphos/reference/federation/directives
 ```docker build -t rover -f ./docker/rover/Dockerfile .```
 
 ```docker run -it --rm -v ./:/app rover```
-
-# data loaders
+# Трішки про оптимізацію й безпеку
+## data loaders
 Один з шляхів оптимізації запитів це використання data loaders. Вони вирішують проблему n+1 запиту а саме коли 
 GraphQL-запит отримує список об'єктів і пов'язані з ними дані, часто виникає ситуація, коли для кожного запису 
 надсилається окремий запит до бази даних або зовнішнього API. Це може призвести до величезної кількості запитів, 
@@ -147,7 +147,7 @@ query {
 всіх книг, а потім для кожної книги резолвер в user-service зробить окремий запит для отримання її автора. 
 Це призведе до 1 запиту для книг і 10 запитів для авторів, замість того, 
 щоб отримати всіх авторів для всіх книг за один запит. 
-# persisted queries
+## persisted queries
 Persisted queries — це техніка оптимізації GraphQL-запитів, яка зберігає запити на сервері або клієнті, 
 щоб зменшити обсяг трафіку та підвищити безпеку API.
 Запити GraphQL створюються під час розробки, а потім зберігаються на сервері або клієнті (це можна дозволити робити й клієнту). 
@@ -158,22 +158,28 @@ Persisted queries — це техніка оптимізації GraphQL-зап�
 <img src="./img/make_persisted.png" alt=""/>
 Робимо запит з використанням хеша.
 <img src="./img/get_persisted.png" alt=""/>
-
-# depth limit
+## depth limit
+Можемо налаштувати "глибину" запиту, щоб уникнути перевантаження сервера.
 <img src="./img/config_depth_limit.png" alt="depth limit"/>
 <img src="./img/depth_limit.png" alt="depth limit"/>
-# libraries
-https://graphql.org/community/tools-and-libraries/
-
-
 
 # links
+https://graphql.org/community/tools-and-libraries/
+
 https://www.apollographql.com/docs/federation/federated-schemas/composition
+
 https://www.apollographql.com/docs/rover/commands/supergraphs/#yaml-configuration-file
+
 https://www.apollographql.com/blog/9-ways-to-secure-your-graphql-api-security-checklist
+
 https://github.com/apollographql/router
+
 https://www.apollographql.com/docs/technotes/TN0021-graph-security/
+
 https://www.apollographql.com/docs/router/
+
 https://www.apollographql.com/docs/apollo-server/performance/apq/
+
 https://gqlgen.com/reference/dataloaders/
+
 https://evgeniy21.medium.com/%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%BC%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%B0-graphql-58e3aca51684
