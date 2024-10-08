@@ -7,6 +7,43 @@ GraphQL був розроблений у великому старому Faceboo
 Схема визначає систему типів. 
 Вона описує множину можливих даних. Реквести від клієнта валідуються і виконуються згідно зі схемою. 
 Клієнт може знайти інформацію про схему через інтроспекцію (якщо вона увімкнена).
+# scalar types
+Скалярні типи це прості типи даних, які представляють собою одне значення.
+Наприклад:
+- Int: A signed 32‐bit integer.
+- Float: A signed double-precision floating-point value.
+- String: A UTF‐8 character sequence.
+- Boolean: true or false.
+- ID: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, defining it as an ID signifies that it is not intended to be human‐readable.
+
+Ми можемо створювати власні скалярні типи, це також допомагає частково валідувати вхідні дані.
+Як приклад я додав скаляр DateTime в схему user-service.
+```
+scalar DateTime
+```
+# object types
+Об'єктні типи складаються з набору полів, кожне з яких може мати свій тип. Наприклад:
+```graphql
+type User @key(fields: "id") {
+    id: ID!
+    name: String!
+    email: String!
+    profile: Profile @hasRole(role: "admin")
+    userFeatureFlags: [UserFeatureFlag!]!
+    gender: UserGender!
+    createdAt: DateTime!
+}
+```
+
+Також є ряд інших типів:
+- **Interface**: Інтерфейси використовуються для описування об'єктів, які мають спільні поля.
+- **Union**: Об'єднання використовується для описування об'єктів, які можуть бути одного з декількох можливих типів.
+- **Enum**: Перерахування використовується для описування набору можливих значень.
+- **Input**: Вхідні типи використовуються для передачі аргументів у запити та мутації.
+# directives
+Директиви це спеціальні аннотації, які можна додати до схеми, щоб змінити поведінку запитів чи резолверів.
+Деякі директиви вбудовані в GraphQL, наприклад @skip та @include, деякі специфічні для федерації.
+Також ми можемо створювати власні директиви.
 # root types
 Основні типи це Query, Mutation та Subscription.
 Query використовуємо для наших запитів, Mutation для змін даних, а Subscription для реакції на події.
@@ -42,37 +79,6 @@ query {
 
 # resolvers
 Резолвери це наший код що використовуюється для виконання запитів.
-# scalar types
-Скалярні типи це прості типи даних, які представляють собою одне значення.
-Наприклад:
-- Int: A signed 32‐bit integer.
-- Float: A signed double-precision floating-point value.
-- String: A UTF‐8 character sequence.
-- Boolean: true or false.
-- ID: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, defining it as an ID signifies that it is not intended to be human‐readable.
-
-Ми можемо створювати власні скалярні типи, це також допомагає частково валідувати вхідні дані. 
-Як приклад я додав скаляр DateTime в схему user-service.
-```
-scalar DateTime
-```
-# object types
-Об'єктні типи складаються з набору полів, кожне з яких може мати свій тип. Наприклад:
-```graphql
-type User @key(fields: "id") {
-    id: ID!
-    name: String!
-    email: String!
-    profile: Profile @hasRole(role: "admin")
-    userFeatureFlags: [UserFeatureFlag!]!
-    gender: UserGender!
-    createdAt: DateTime!
-}
-```
-# directives
-Директиви це спеціальні аннотації, які можна додати до схеми, щоб змінити поведінку запитів чи резолверів.
-Деякі директиви вбудовані в GraphQL, наприклад @skip та @include, деякі специфічні для федерації.
-Також ми можемо створювати власні директиви.
 
 # Apollo Federation
 **Apollo Federation** — це метод масштабування GraphQL, який дозволяє поєднувати декілька GraphQL-сервісів у єдину, злагоджену GraphQL API. Це підхід, який дозволяє розподіляти ваш GraphQL-схеми між декількома сервісами (так званими "сервісами федерації"), зберігаючи при цьому централізовану точку доступу для клієнтів.
