@@ -10,10 +10,49 @@
 			"name": "GetUsers",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "b",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"query\": \" query getUsers { __typename getUsers {id email createdAt books {id summery author {id gender}}}}\"\n}",
+					"raw": "{\n    \"query\": \" query getUsers { __typename getUsers {id email createdAt profile { rating } books {id summery author {email id gender }}}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forbidden",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "a",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \" query getUsers { __typename getUsers {profile { rating }}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

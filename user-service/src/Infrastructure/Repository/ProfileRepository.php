@@ -42,12 +42,10 @@ final readonly class ProfileRepository implements ProfileRepositoryInterface
     {
         $profiles = [];
 
-        for ($i = 0; $i < 10; $i++) {
-            $idUser = ++$i;
-            $id = $idUser * 7;
-            $profiles[$id] = new Profile(
-                (string) $id,
-                (string) $idUser,
+        for ($i = 1; $i < 11; $i++) {
+            $profiles[$i] = new Profile(
+                (string) $i,
+                (string) $i,
                 rand(1, 5),
             );
         }
