@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GraphqlApp\Domain\Enum;
+namespace UserService\Domain\Enum;
 
 enum UserGender: string
 {

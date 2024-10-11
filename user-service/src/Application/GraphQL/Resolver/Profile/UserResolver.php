@@ -1,15 +1,14 @@
 <?php
 
 declare (strict_types=1);
+
 namespace UserService\Application\GraphQL\Resolver\Profile;
 
-use Axtiva\FlexibleGraphql\Generator\Exception\NotImplementedResolver;
 use GraphQL\Type\Definition\ResolveInfo;
 use Axtiva\FlexibleGraphql\Resolver\ResolverInterface;
-use UserService\Application\GraphQL\Mapper\ProfileMapper;
+use UserService\Application\GraphQL\Mapper\UserMapper;
 use UserService\Application\GraphQL\Model\ProfileType;
 use UserService\Application\GraphQL\Model\UserType;
-use UserService\Domain\UseCase\ProfileUseCase;
 use UserService\Domain\UseCase\UserUseCase;
 
 /**
@@ -33,8 +32,8 @@ final readonly class UserResolver implements ResolverInterface
      */
     public function __invoke($rootValue, $args, $context, ResolveInfo $info)
     {
-        return ProfileMapper::map(
-            $this->useCase->findById($rootValue->get())
+        return UserMapper::map(
+            $this->useCase->findById($rootValue->id)
         );
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace UserService\Domain\Entity;
 
-use GraphqlApp\Domain\Enum\UserGender;
+use UserService\Domain\Enum\UserGender;
 
 final readonly class User
 {

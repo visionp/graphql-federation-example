@@ -1,6 +1,7 @@
 <?php
 
 declare (strict_types=1);
+
 namespace UserService\Application\GraphQL\Resolver\User;
 
 use GraphQL\Type\Definition\ResolveInfo;
@@ -17,7 +18,7 @@ use UserService\Domain\UseCase\ProfileUseCase;
 final readonly class ProfileResolver implements ResolverInterface
 {
     public function __construct(
-        private ProfileUseCase $useCase
+        private ProfileUseCase $useCase,
     )
     {
     }
@@ -27,6 +28,7 @@ final readonly class ProfileResolver implements ResolverInterface
      * @param $args
      * @param $context
      * @param ResolveInfo $info
+     *
      * @return ProfileType
      */
     public function __invoke($rootValue, $args, $context, ResolveInfo $info): ProfileType

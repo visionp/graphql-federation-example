@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace UserService\Infrastructure\Repository;
 
-use GraphqlApp\Domain\Enum\UserGender;
+use UserService\Domain\Enum\UserGender;
 use UserService\Domain\Entity\User;
 use UserService\Domain\Repository\UserRepositoryInterface;
 use UserService\Domain\Collection\UserCollection;
